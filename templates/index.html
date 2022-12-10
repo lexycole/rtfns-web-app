@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RealTime Fake News Detection System</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<!--====== Main css ======-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+
+	<!--====== Title ======-->
+	<title> Home </title>
+
+	<!--====== Animate Css ======-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<!--====== Bootstrap css ======-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!--====== Fontawesome css ======-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+	<!--====== Flaticon css ======-->
+	<link rel="stylesheet"
+		href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
+	<!--====== Slick Css ======-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+	<!--====== Lity Css ======-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css" />
+
+
+	<!--====== Bootstrap js ======-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<!--====== jquery js ======-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!--====== Inview js ======-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inview/1.0.0/jquery.inview.min.js"></script>
+	<!--====== Slick js ======-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<!--====== Lity js ======-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js"></script>
+	<!--====== Wow js ======-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+
+</head>
+
+<body class="wrapper" style="background-image: url(/static/images/3698488.jpg); background-repeat: no-repeat;">
+	<!-- Nav heading Start -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+				aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Notify Me</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About NLP</a>
+					</li>
+				</ul>
+				<span class="navbar-text">
+					Contact
+				</span>
+			</div>
+		</div>
+	</nav>
+	<!-- Nav heading Ends -->
+
+	<!-- Main Content Start -->
+	<br>
+	<h4 style="text-align:center; color:#ffffff;">RealTime Fake News Detection System Using Natural Language Procesing And Machine Learning.</h4>
+	<br>
+	<div class="container">
+		<form action="{{ url_for('predict')}}" method="POST">
+			<textarea class="form-control" name="message" rows="5" cols="60" required="required"
+				style="font-size: 18pt" placeholder="Write your text here..."></textarea>
+
+			<br></br>
+				<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+			
+			<div class="results mt-5">
+
+				{% if prediction == ['FAKE']%}
+				<h2 style="color:white;">Detect: <b>⚠️Looking Spam News</b></h2>
+				{% elif prediction == ['REAL']%}
+				<h2 style="color:white;">Detect: <b>✅Looking Real News</b></h2>
+				{% endif %}
+
+			</div>
+
+		</form>
+
+	</div>
+
+	<!-- Footer Start -->
+	<footer class="text-center text-lg-start bg-dark text-white mt-auto fixed-bottom">
+		<div class="text-center p-4 text-white" style="background-color: rgba(0, 0, 0, 0.05);">
+			© 2022 Copyright:
+			<a class="text-reset fw-bold text-white" href="#">RealTime Fake News Detection</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	
+	<!-- Footer End-->
+</body>
+
+</html>
